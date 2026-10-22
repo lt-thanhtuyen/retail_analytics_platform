@@ -27,21 +27,21 @@ Build a retail analytics platform that prepares, stores, analyzes, and presents 
 
 ## 4. Data Quality and Business Rules
 
-- Identify cancelled invoices before calculating sales metrics.
-- Investigate negative quantities instead of automatically deleting them.
-- Investigate zero or negative unit prices.
-- Handle missing customer IDs appropriately when calculating unique customers.
-- Define how duplicate records should be treated before aggregation.
-- Keep the source dataset unchanged.
-- Document the final business rules before implementing KPI queries.
+- **Cancelled invoices:** Invoice IDs starting with `C` will be retained for separate cancellation analysis and excluded from standard sales metrics.
+- **Negative quantities:** Negative quantities will be analyzed separately from cancelled invoices, and will not automatically be classified as confirmed returns.
+- **Zero or negative unit prices:** Records with unit prices less than or equal to zero will be retained for investigation but excluded from standard sales revenue calculations.
+- **Missing customer IDs:** Missing Customer IDs will not automatically invalidate an otherwise eligible sale. Such records can contribute to sales revenue but will not contribute to the unique customer count.
+- **Duplicate records:** Potential exact duplicates will be flagged and investigated before any removal. Records will not be automatically deleted.
+- **Source data preservation:** The original dataset will remain unchanged. Data cleaning and business rules will be applied to prepared data.
+- **KPI consistency:** All exclusions and calculation rules must be documented before implementing KPI queries.
 
 ## 5. Open Questions
 
-- Should revenue include or exclude cancelled invoices?
-- How should returns and negative quantities affect revenue and units sold?
-- Should invoices with zero or negative prices be excluded from sales metrics?
-- How should missing customer IDs affect customer-level analysis?
-- What is the chosen definition of a valid invoice?
+- How should net revenue and return-adjusted sales be calculated?
+- Should exact duplicate records eventually be removed? If so, what criteria should determine removal?
+- How should invoices with no eligible sales lines be handled when calculating invoice count and average order value?
+- How should products with missing descriptions be represented in product-level analysis?
+- Should additional validation rules be applied to invoice IDs, quantities, prices, and transaction dates?
 
 ## 6. Next Steps
 
