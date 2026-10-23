@@ -62,4 +62,3 @@ Các giá trị cực trị cần được điều tra trước khi chốt công
 2. Xác định tiêu chí xử lý bản ghi trùng chính xác.
 3. Hoàn thiện định nghĩa KPI và các điều kiện lọc.
 4. Chuẩn bị thiết kế schema MySQL sau khi các quy tắc được xác minh.
-
